@@ -3,9 +3,9 @@ import Furniture from '../models/furniture.js';
 
 export const getFurnitures = async (req, res) => {    
     try {
-        const furniture = await Furniture.find();
+        const furnitures = await Furniture.find();
 
-        res.status(200).json(furniture);
+        res.status(200).json(furnitures);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
@@ -17,7 +17,7 @@ export const getFurnitureById = async (req, res) => {
     try {
         const furniture = await Furniture.findById(_id);
 
-        res.json({ data: furniture});
+        res.json(furniture);
 
     } catch (error) {
         res.status(404).json({ message: error.message });
@@ -56,5 +56,5 @@ export const deleteFurniture = async (req, res) => {
 
     await Furniture.findByIdAndRemove(id);
 
-    res.json({ message: 'Furniture deleted successfully.' });
+    res.json({ message: 'Furniture deleted successfully.', _id: req.params.taskId });
 }

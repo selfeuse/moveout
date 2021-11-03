@@ -5,19 +5,10 @@
 
     <div class="ui labeled input fluid">
       <div class="ui label">
-        <i class="calendar plus icon"></i>task
+        <i class="calendar plus icon"></i>Furniture
       </div>
-      <input type="text" placeholder="Enter task..." v-model="task.task1" />
-    </div>
-
-    <div class="ui labeled input fluid">
-      <div class="ui label">
-   <i class="info circle icon"></i> Details
-      </div>
-      <input type="text" placeholder="Enter Details" v-model="task.task2" />
-    </div>
-
-    
+      <input type="text" placeholder="Enter furniture..." v-model="furniture.name" />
+    </div>    
 
     <button class="positive ui button">Submit</button>
   </form>
@@ -25,15 +16,14 @@
 
 <script>
 export default {
-  name: 'task-form',
+  name: 'furniture-form',
   props: {
-    task: {
+    furniture: {
       type: Object,
       required: false,
       default: () => {
         return {
-          task1: '',
-          task2: ''
+          name: ''
         };
       }
     }
@@ -45,10 +35,10 @@ export default {
   },
   methods: {
     onSubmit: function() {
-      if (this.task.task1 === '' || this.task.task2 === '') {
+      if (this.tfurniture.name === '') {
         this.errorsPresent = true;
       } else {
-        this.$emit('createOrUpdate', this.task);
+        this.$emit('createOrUpdate', this.furniture);
       }
     }
   }
