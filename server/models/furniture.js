@@ -18,7 +18,7 @@ const FurnitureSchema = mongoose.Schema({
     },
     category: {
         type: String,
-        enum: ['A donner', 'A vendre', 'A garder']
+        enum: ['To give', 'To sell', 'To keep']
     },
     room: {
         type: String

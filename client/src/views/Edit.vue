@@ -1,33 +1,36 @@
 <template>
   <div>
     <h1>Edit furniture</h1>
-    <furniture-form @createOrUpdate="createOrUpdate" :furniture=this.furniture></furniture-form>
+    <furniture-form
+      @createOrUpdate="createOrUpdate"
+      :furniture="this.furniture"
+    ></furniture-form>
   </div>
 </template>
 
 <script>
-import furnituresForm from '../components/FurnituresForm.vue';
-import { api } from '../helpers/helpers';
+import furnituresForm from "../components/FurnituresForm.vue";
+import { api } from "../helpers/helpers";
 
 export default {
-  name: 'edit',
+  name: "edit",
   components: {
-    'furniture-form': furnituresForm
+    "furniture-form": furnituresForm,
   },
-  data: function() {
+  data: function () {
     return {
-      furnitures: {}
+      furnitures: {},
     };
   },
   methods: {
-    createOrUpdate: async function(furniture) {
+    createOrUpdate: async function (furniture) {
       await api.updatefurniture(furniture);
-      this.flash('furniture updated sucessfully!', 'success');
+      this.flash("furniture updated sucessfully!", "success");
       this.$router.push(`/furniture/${furniture._id}`);
-    }
+    },
   },
   async mounted() {
     this.furniture = await api.getfurniture(this.$route.params.id);
-  }
+  },
 };
 </script>

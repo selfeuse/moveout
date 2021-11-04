@@ -1,14 +1,39 @@
 <template>
- <form action="#" @submit.prevent="onSubmit">
+  <form action="#" @submit.prevent="onSubmit">
     <p v-if="errorsPresent" class="error">Please fill out both fields!</p>
 
+    <div class="ui labeled input fluid">
+      <label for="name">Name</label>
+      <input type="text" id="name" v-model="task.name" />
+    </div>
 
     <div class="ui labeled input fluid">
-      <div class="ui label">
-        <i class="calendar plus icon"></i>Furniture
-      </div>
-      <input type="text" placeholder="Enter furniture..." v-model="furniture.name" />
-    </div>    
+      <label for="room">Room</label>
+      <input type="text" id="room" v-model="task.room" />
+    </div>
+
+    <div class="ui labeled input fluid">
+      <label for="category">Category</label>
+      <input type="text" v-model="task.category" list="categories" />
+      <datalist id="categories">
+        <option v-for="category in task.categories" :key="category" :value="category" >{{ category }}</option>
+      </datalist>
+    </div>
+
+    <div class="ui labeled input fluid">
+      <label for="buyedPrice">Buyed price</label>
+      <input type="number" id="buyedPrice" v-model="task.buyedPrice" />
+    </div>
+
+    <div class="ui labeled input fluid">
+      <label for="wantedPrice">Wanted price</label>
+      <input type="number" id="wantedPrice" v-model="task.wantedPrice" />
+    </div>
+
+    <div class="ui labeled input fluid">
+      <label for="price">Price I get</label>
+      <input type="number" id="price" v-model="task.price" />
+    </div>
 
     <button class="positive ui button">Submit</button>
   </form>
@@ -16,32 +41,38 @@
 
 <script>
 export default {
-  name: 'furniture-form',
+  name: "task-form",
   props: {
-    furniture: {
+    task: {
       type: Object,
       required: false,
       default: () => {
         return {
-          name: ''
+          name: "",
+          room: "",
+          buyedPrice: 0,
+          wantedPrice: 0,
+          price: 0,
+          category: "",
+          categories: ["To give", "To sell", "To keep"],
         };
-      }
-    }
+      },
+    },
   },
   data() {
     return {
-      errorsPresent: false
+      errorsPresent: false,
     };
   },
   methods: {
-    onSubmit: function() {
-      if (this.tfurniture.name === '') {
+    onSubmit: function () {
+      if (this.task.name === "") {
         this.errorsPresent = true;
       } else {
-        this.$emit('createOrUpdate', this.furniture);
+        this.$emit("createOrUpdate", this.task);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -2,16 +2,15 @@
   <div>
     <h1>Show furniture</h1>
 
-   
     <div class="ui labeled input fluid">
-      <div class="ui label">
-      <i class="furnitures icon"></i>  Furniture
-      </div>
-      <input type="text" readonly  :value="furniture.name"/>
+      <div class="ui label"><i class="furnitures icon"></i> Furniture</div>
+      <input type="text" readonly :value="furniture.name" />
     </div>
 
     <div class="actions">
-      <router-link :to="{ name: 'edit', params: { id: this.$route.params.id }}">
+      <router-link
+        :to="{ name: 'edit', params: { id: this.$route.params.id } }"
+      >
         Edit furniture
       </router-link>
     </div>
@@ -19,17 +18,17 @@
 </template>
 
 <script>
-import { api } from '../helpers/helpers';
+import { api } from "../helpers/helpers";
 export default {
-  name: 'show',
+  name: "show",
   data() {
     return {
-      furniture: ''
+      furniture: "",
     };
   },
   async mounted() {
     this.furniture = await api.getfurniture(this.$route.params.id);
-  }
+  },
 };
 </script>
 

@@ -1,62 +1,57 @@
 <template>
- <form action="#" @submit.prevent="onSubmit">
-    <p v-if="errorsPresent" class="error">Please fill out both fields!</p>
-
-
-    <div class="ui labeled input fluid">
-      <div class="ui label">
-        <i class="calendar plus icon"></i>task
+  <div id="app">
+    <div class="ui inverted segment navbar">
+      <div class="ui center aligned container">
+        <div class="ui large secondary inverted pointing menu compact">
+          <router-link to="/furnitures" exact class="item">
+           <i class="furnitures icon"></i> Furnitures
+          </router-link>
+          <router-link to="/furnitures/new" class="item">
+            <i class="plus circle icon"></i> New
+          </router-link>
+      
+        </div>
       </div>
-      <input type="text" placeholder="Enter task..." v-model="task.task1" />
     </div>
 
-    <div class="ui labeled input fluid">
-      <div class="ui label">
-   <i class="info circle icon"></i> Details
+    <div class="ui text container">
+      <div class="ui one column grid">
+        <div class="column">
+          <router-view />
+        </div>
       </div>
-      <input type="text" placeholder="Enter Details" v-model="task.task2" />
     </div>
-
-    
-
-    <button class="positive ui button">Submit</button>
-  </form>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'task-form',
-  props: {
-    task: {
-      type: Object,
-      required: false,
-      default: () => {
-        return {
-          task1: '',
-          task2: ''
-        };
-      }
-    }
-  },
-  data() {
-    return {
-      errorsPresent: false
-    };
-  },
-  methods: {
-    onSubmit: function() {
-      if (this.task.task1 === '' || this.task.task2 === '') {
-        this.errorsPresent = true;
-      } else {
-        this.$emit('createOrUpdate', this.task);
-      }
-    }
-  }
+  name: 'app'
 };
 </script>
 
-<style scoped>
-.error {
-  color: red;
+<style>
+#app > div.navbar {
+  margin-bottom: 1.5em;
+}
+.myFlash {
+  width: 250px;
+  margin: 10px;
+  position: absolute;
+  top: 50;
+  right: 0;
+}
+input {
+  width: 300px;
+}
+div.label {
+  width: 120px;
+}
+div.input {
+  margin-bottom: 10px;
+}
+button.ui.button {
+  margin-top: 15px;
+  display: block;
 }
 </style>
