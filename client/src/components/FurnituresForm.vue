@@ -4,35 +4,35 @@
 
     <div class="ui labeled input fluid">
       <label for="name">Name</label>
-      <input type="text" id="name" v-model="task.name" />
+      <input type="text" id="name" v-model="furniture.name" />
     </div>
 
     <div class="ui labeled input fluid">
       <label for="room">Room</label>
-      <input type="text" id="room" v-model="task.room" />
+      <input type="text" id="room" v-model="furniture.room" />
     </div>
 
     <div class="ui labeled input fluid">
       <label for="category">Category</label>
-      <input type="text" v-model="task.category" list="categories" />
+      <input type="text" v-model="furniture.category" list="categories" />
       <datalist id="categories">
-        <option v-for="category in task.categories" :key="category" :value="category" >{{ category }}</option>
+        <option v-for="category in furniture.categories" :key="category" :value="category" >{{ category }}</option>
       </datalist>
     </div>
 
     <div class="ui labeled input fluid">
       <label for="buyedPrice">Buyed price</label>
-      <input type="number" id="buyedPrice" v-model="task.buyedPrice" />
+      <input type="number" id="buyedPrice" v-model="furniture.buyedPrice" />
     </div>
 
     <div class="ui labeled input fluid">
       <label for="wantedPrice">Wanted price</label>
-      <input type="number" id="wantedPrice" v-model="task.wantedPrice" />
+      <input type="number" id="wantedPrice" v-model="furniture.wantedPrice" />
     </div>
 
     <div class="ui labeled input fluid">
       <label for="price">Price I get</label>
-      <input type="number" id="price" v-model="task.price" />
+      <input type="number" id="price" v-model="furniture.price" />
     </div>
 
     <button class="positive ui button">Submit</button>
@@ -43,7 +43,7 @@
 export default {
   name: "task-form",
   props: {
-    task: {
+    furniture: {
       type: Object,
       required: false,
       default: () => {
@@ -66,10 +66,10 @@ export default {
   },
   methods: {
     onSubmit: function () {
-      if (this.task.name === "") {
+      if (this.furniture.name === "") {
         this.errorsPresent = true;
       } else {
-        this.$emit("createOrUpdate", this.task);
+        this.$emit("createOrUpdate", this.furniture);
       }
     },
   },

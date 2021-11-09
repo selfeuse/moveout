@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/', getFurnitures);
 router.get('/:id', getFurnitureById);
-router.put('/', updateFurniture)
+router.put('/:id', updateFurniture)
 router.post('/', createFurniture);
 router.delete('/:id', deleteFurniture)
 

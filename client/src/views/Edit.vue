@@ -19,13 +19,13 @@ export default {
   },
   data: function () {
     return {
-      furnitures: {},
-    };
+      furniture: {},
+    }; 
   },
   methods: {
-    createOrUpdate: async function (furniture) {
+    createOrUpdate: async function(furniture) {
       await api.updatefurniture(furniture);
-      this.flash("furniture updated sucessfully!", "success");
+      this.flash("Furniture updated sucessfully!", "success");
       this.$router.push(`/furniture/${furniture._id}`);
     },
   },
