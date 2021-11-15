@@ -70,7 +70,6 @@ export default {
           furnitures[furniture.room].push(furniture);
         }
       });
-      console.log(furnitures);
       return furnitures;
     },
   },
