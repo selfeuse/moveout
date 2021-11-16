@@ -7,6 +7,7 @@
         <table id="furnitures" class="ui celled compact table">
           <thead>
             <tr>
+              <th>Sold</th>
               <th>Name</th>
               <th>Category</th>
               <th>Room</th>
@@ -19,6 +20,7 @@
             </tr>
           </thead>
           <tr v-for="(furniture, innerIndex) in furnitures" :key="innerIndex">
+            <td>{{ furniture.sold ? 'Sold' : 'Not sold yet'}} </td>
             <td>{{ furniture.name }}</td>
             <td>{{ furniture.category }}</td>
             <td>{{ furniture.room }}</td>

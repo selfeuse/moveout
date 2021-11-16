@@ -12,6 +12,11 @@
       <input type="text" readonly :value="furniture.note" />
     </div>
 
+    <div class="ui labeled input fluid">
+      <div class="ui label"><i class="furnitures icon"></i>Sold</div>
+      <input type="text" readonly :value="furniture.sold ? Sold : 'Not sold yet'" />
+    </div>
+    
     <div class="actions">
       <router-link
         :to="{ name: 'edit', params: { id: this.$route.params.id } }"

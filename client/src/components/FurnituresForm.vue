@@ -35,6 +35,11 @@
       <input type="text" id="note" v-model="furniture.note" />
     </div>
 
+    <div class="ui labeled input fluid">
+      <div class="ui label"><i class="furnitures icon"></i>Sold</div>
+      <input type="checkbox" id="sold" v-model="furniture.sold"/>
+    </div>
+
     <button class="positive ui button">Submit</button>
   </form>
 </template>
@@ -52,6 +57,7 @@ export default {
           room: "",
           buyedPrice: 0,
           wantedPrice: 0,
+          sold: false,
           note: "",
           category: "",
           categories: ["To give", "To sell", "To keep"],

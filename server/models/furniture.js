@@ -26,6 +26,10 @@ const FurnitureSchema = mongoose.Schema({
         type: String,
         default: 'urlImg'
     },
+    sold: {
+        type: Boolean,
+        default: false
+    },
     creator: {
         type: String
     },
