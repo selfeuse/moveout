@@ -20,13 +20,18 @@ export default {
   data: function () {
     return {
       furniture: {},
-    }; 
+    };
   },
   methods: {
-    createOrUpdate: async function(furniture) {
-      await api.updatefurniture(furniture);
-      this.flash("Furniture updated sucessfully!", "success");
-      this.$router.push(`/furniture/${furniture._id}`);
+    createOrUpdate: async function (furniture) {
+      await api
+        .updatefurniture(furniture)
+        .then(() => {
+          this.$router.push("/furnitures");
+        })
+        .catch(function (error) {
+          console.log(JSON.stringify(error));
+        });
     },
   },
   async mounted() {

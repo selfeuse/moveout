@@ -12,7 +12,6 @@
               <th>Room</th>
               <th>Buyed price</th>
               <th>Wanted price</th>
-              <th>Price I get</th>
               <th><i class="edit icon"></i></th>
               <th><i class="trash icon"></i></th>
 
@@ -25,7 +24,6 @@
             <td>{{ furniture.room }}</td>
             <td>{{ furniture.buyedPrice }}</td>
             <td>{{ furniture.wantedPrice }}</td>
-            <td>{{ furniture.price }}</td>
             <td width="75" class="center aligned">
               <router-link :to="{ name: 'show', params: { id: furniture._id } }"
                 >Show</router-link
@@ -77,12 +75,17 @@ export default {
     async onDestroy(id) {
       const sure = window.confirm("Are you sure?");
       if (!sure) return;
-      await api.deletefurniture(id);
-      this.flash("Furniture deleted sucessfully!", "success");
-      const newfurnitures = this.furnitures.filter(
-        (furniture) => furniture._id !== id
-      );
-      this.furnitures = newfurnitures;
+      await api
+        .deletefurniture(id)
+        .then(() => {
+          const newfurnitures = this.furnitures.filter(
+            (furniture) => furniture._id !== id
+          );
+          this.furnitures = newfurnitures;
+        })
+        .catch(function (error) {
+          console.log(JSON.stringify(error));
+        });
     },
   },
   async mounted() {

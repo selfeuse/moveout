@@ -6,6 +6,11 @@
       <div class="ui label"><i class="furnitures icon"></i> Furniture</div>
       <input type="text" readonly :value="furniture.name" />
     </div>
+    
+    <div class="ui labeled input fluid">
+      <div class="ui label"><i class="furnitures icon"></i>Note</div>
+      <input type="text" readonly :value="furniture.note" />
+    </div>
 
     <div class="actions">
       <router-link

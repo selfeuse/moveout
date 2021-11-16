@@ -29,10 +29,10 @@
       <label for="wantedPrice">Wanted price</label>
       <input type="number" id="wantedPrice" v-model="furniture.wantedPrice" />
     </div>
-
+    
     <div class="ui labeled input fluid">
-      <label for="price">Price I get</label>
-      <input type="number" id="price" v-model="furniture.price" />
+      <label for="note">Note</label>
+      <input type="text" id="note" v-model="furniture.note" />
     </div>
 
     <button class="positive ui button">Submit</button>
@@ -52,7 +52,7 @@ export default {
           room: "",
           buyedPrice: 0,
           wantedPrice: 0,
-          price: 0,
+          note: "",
           category: "",
           categories: ["To give", "To sell", "To keep"],
         };

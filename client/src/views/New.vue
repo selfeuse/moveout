@@ -15,9 +15,13 @@ export default {
   },
   methods: {
     createOrUpdate: async function (furniture) {
-      const res = await api.createfurniture(furniture);
-      this.flash("furniture created", "success");
-      this.$router.push(`/furniture/${res._id}`);
+      await api.createfurniture(furniture)
+        .then(() => {
+          this.$router.push("/furnitures");
+        })
+        .catch(function (error) {
+          console.log(JSON.stringify(error));
+        });
     },
   },
 };

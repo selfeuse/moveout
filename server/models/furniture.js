@@ -12,15 +12,14 @@ const FurnitureSchema = mongoose.Schema({
         type: Number,
         default: 0
     },
-    price: {
-        type: Number,
-        default: 0
-    },
     category: {
         type: String,
         enum: ['To give', 'To sell', 'To keep']
     },
     room: {
+        type: String
+    },
+    note: {
         type: String
     },
     image: {
