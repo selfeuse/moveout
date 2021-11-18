@@ -11,7 +11,8 @@ Vue.use(VueFlashMessage, {
 });
 
 const vm = new Vue();
-const baseURL = 'http://localhost:5000/furniture/';
+const baseURL = 'https://selfeuse-moveout.herokuapp.com/furniture';
+//const baseURL = 'http://localhost:5000/furniture'
 
 const handleError = fn => (...params) =>
   fn(...params).catch(error => {
